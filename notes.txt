@@ -1,0 +1,3 @@
+12, 3, 7 = update on hangout
+
+1. Difference between var, let and const. Go through looping statements.
