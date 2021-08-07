@@ -88,7 +88,7 @@ let absentCounter = 0
 const DAYS_IN_MONTH = 20
 
 for(var day=1; day < Number.MAX_VALUE; day++){
-    if(totalHours >= 160 && day >= 20){
+    if(totalHours >= 160 || day >= 20){
         break;
     }
 
