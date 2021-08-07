@@ -19,6 +19,14 @@ function attendanceCheck(){
 }
 
 
+// UC2 - Daily Wage
 function fullTimeWage(){
     return constant_values.FULL_TIME * constant_values.WAGE_PER_HR
 }
+
+
+// UC3 - Part Time Wage
+function partTimeWage(){
+    return constant_values.PART_TIME * constant_values.WAGE_PER_HR
+}
+
