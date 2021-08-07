@@ -1,7 +1,5 @@
 let constant_values = require("./constants.js") 
 
-console.log(constant_values.FULL_TIME)
-
 // UC1 - Greeting
 console.log("Welcome to Employee Wage.")
 
