@@ -1,3 +1,7 @@
+let constant_values = require("./constants.js") 
+
+console.log(constant_values.FULL_TIME)
+
 // UC1 - Greeting
 console.log("Welcome to Employee Wage.")
 
@@ -14,22 +18,18 @@ if (currEmpAttendance == IS_ABSENT){
 */
 
 // UC3
-const FULL_TIME = 8
-const PART_TIME = 4
-const WAGE_PER_HR = 20
-
 let wage = 0
 let workShift = Math.floor(Math.random() * 10) % 3
 
 function getDailyPay(workShift){
     switch(workShift){
         case 1: // Full Time
-            wage = WAGE_PER_HR * FULL_TIME
+            wage = constant_values.WAGE_PER_HR * constant_values.FULL_TIME
             console.log("Wage for full time: " + wage)
             break;
         
         case 0: // Part Time
-            wage = WAGE_PER_HR * PART_TIME
+            wage = constant_values.WAGE_PER_HR * constant_values.PART_TIME
             console.log("Wage for part time: " + wage)
             break;
         
@@ -80,46 +80,50 @@ console.log("Days absent: " + absentCounter)
 */
 
 // UC5
-let totalHours = 0
-let todayHours = 0
-let fullTimeCounter = 0
-let partTimeCounter = 0
-let absentCounter = 0
-const DAYS_IN_MONTH = 20
 
-for(var day=1; day < Number.MAX_VALUE; day++){
-    if(totalHours >= 160 || day >= 20){
-        break;
+function calcMonthlyWage(){
+    let totalHours = 0
+    let todayHours = 0
+    let fullTimeCounter = 0
+    let partTimeCounter = 0
+    let absentCounter = 0
+
+    for(var day=1; day < Number.MAX_VALUE; day++){
+        if(totalHours >= 160 || day >= 20){
+            break;
+        }
+
+        let currWorkShift = Math.floor(Math.random() * 10) % 3
+
+        switch(currWorkShift){
+            case 1: // Full Time
+                todayHours = constant_values.FULL_TIME
+                fullTimeCounter += 1
+                break;
+            
+            case 0: // Part Time
+                todayHours = constant_values.PART_TIME
+                partTimeCounter += 1
+                break;
+            
+            default:
+                todayHours = 0
+                absentCounter += 1
+                break;
+        }
+
+        totalHours += todayHours
     }
 
-    let currWorkShift = Math.floor(Math.random() * 10) % 3
+    totalWage = totalHours * constant_values.WAGE_PER_HR
 
-    switch(currWorkShift){
-        case 1: // Full Time
-            todayHours = FULL_TIME
-            fullTimeCounter += 1
-            break;
-        
-        case 0: // Part Time
-            todayHours = PART_TIME
-            partTimeCounter += 1
-            break;
-        
-        default:
-            todayHours = 0
-            absentCounter += 1
-            break;
-    }
-
-    totalHours += todayHours
+    console.log("--------------------------------")
+    console.log("Total Wage:" + totalWage)
+    console.log("Hours worked:" + totalHours)
+    console.log("Days passed: " + day)
+    console.log("Days worked Full Time: " + fullTimeCounter)
+    console.log("Days worked Part Time: " + partTimeCounter)
+    console.log("Days absent: " + absentCounter)
 }
 
-totalWage = totalHours * WAGE_PER_HR
-
-console.log("--------------------------------")
-console.log("Total Wage:" + totalWage)
-console.log("Hours worked:" + totalHours)
-console.log("Days passed: " + day)
-console.log("Days worked Full Time: " + fullTimeCounter)
-console.log("Days worked Part Time: " + partTimeCounter)
-console.log("Days absent: " + absentCounter)
+calcMonthlyWage()
