@@ -30,3 +30,27 @@ function partTimeWage(){
     return constant_values.PART_TIME * constant_values.WAGE_PER_HR
 }
 
+
+// UC4 - Switch Case
+let wage = 0
+let workShift = Math.floor(Math.random() * 10) % 3
+
+function getDailyPay(workShift){
+    switch(workShift){
+        case 1: // Full Time
+            wage = constant_values.WAGE_PER_HR * constant_values.FULL_TIME
+            console.log("Wage for full time: " + wage)
+            break;
+        
+        case 0: // Part Time
+            wage = constant_values.WAGE_PER_HR * constant_values.PART_TIME
+            console.log("Wage for part time: " + wage)
+            break;
+        
+        default: // Absent
+            wage = 0
+            console.log("Wage when absent: " + wage)
+    }
+
+    return wage
+}
