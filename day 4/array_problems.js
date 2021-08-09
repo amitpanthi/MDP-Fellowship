@@ -78,3 +78,20 @@ function findDuplicates(array){
 }
 
 console.log(findDuplicates(numbers))
+
+// Find the Union and Intersection of the two sorted arrays
+let numsOne = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+let numsTwo = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+function arrIntersection(arr1, arr2){
+    let intersection = arr1.filter(number => arr2.includes(number))
+    return intersection
+}
+
+function arrUnion(arr1, arr2){
+    let union = [...arr1, ...arr2]
+    return Array.from(new Set(union))
+}
+
+console.log(arrIntersection(numsOne, numsTwo))
+console.log(arrUnion(numsOne, numsTwo))
