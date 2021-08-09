@@ -212,9 +212,7 @@ class EmployeeWage{
         return [wages, workHours]
     }
 
-    calculateTotalWages(){
-        let employeeStats = this.monthlyPayBreakdown()
-        let wages = employeeStats[0]
+    calculateTotalWages(wages){
         let runningSum = 0
 
         wages.forEach(wage => runningSum += wage)
@@ -231,6 +229,35 @@ class EmployeeWage{
     }
 
 
+    findFirstFullTime(wage_array){
+        let idx = wage_array.findIndex(function(wage){
+            return wage == 160
+        })
+
+        console.log("First full time wage was earned on Day " + (idx + 1))
+    }
+
+
+    checkPartTime(wage_array){
+        if(wage_array.find(function(wage){
+            return wage == 80
+        })){
+            console.log("Worker has worked part time")
+        } else {
+            console.log("Worker has not worked part time")
+        }
+    }
+
+
+    checkDaysWorked(wage_array){
+        let daysWorked = wage_array.filter(function(wage){
+            return wage >= 80
+        }).length
+
+        console.log("Worker has worked for " + daysWorked + " days")
+    }
+
+
     displayReport(){
         this.greet()
         this.getAttendance()
@@ -243,8 +270,11 @@ class EmployeeWage{
     }
 
     runHelperFunctions(wage_array){
-        this.calculateTotalWages()
+        this.calculateTotalWages(wage_array)
         this.printDailyWage(wage_array)
+        this.findFirstFullTime(wage_array)
+        this.checkPartTime(wage_array)
+        this.checkDaysWorked(wage_array)
     }
 }
 
