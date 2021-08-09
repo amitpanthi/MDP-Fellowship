@@ -32,3 +32,25 @@ function findSmallestAndBiggest(array){
 }
 
 console.log(findSmallestAndBiggest(numbers))
+
+
+// Find all pairs of an integer array whose sum is equal to a given number
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+function findPairWithSum(array, sum_val){
+    let pairs = []
+    let runningValues = new Set()
+
+    for(const val of array){
+        if(runningValues.has(sum_val - val)){
+            pairs.push([sum_val - val, val])
+            runningValues.delete(sum_val - val)
+        } else {
+            runningValues.add(val)
+        }
+    }
+
+    return pairs
+}
+
+console.log(findPairWithSum(numbers, 3))
