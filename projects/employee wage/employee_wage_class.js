@@ -223,21 +223,33 @@ class EmployeeWage{
         return wages
     }
     
+
+    printDailyWage(wage_array){
+        wage_array.map(function(wage, currDay){
+            console.log(`Day ${++currDay}: ${wage}`)
+        })
+    }
+
+
     displayReport(){
         this.greet()
         this.getAttendance()
         this.getDailyPay()
         this.getMonthlyPay()
         this.maxWorkingHours()
-        this.monthlyPayBreakdown()
+        let employeeStats = this.monthlyPayBreakdown()
+
+        return employeeStats
     }
 
-    runHelperFunctions(){
+    runHelperFunctions(wage_array){
         this.calculateTotalWages()
+        this.printDailyWage(wage_array)
     }
 }
 
 let john_wage = new EmployeeWage("John")
 let akash_wage = new EmployeeWage("Akash")
 
-john_wage.runHelperFunctions()
+employeeStats = john_wage.displayReport()
+john_wage.runHelperFunctions(employeeStats[0])
