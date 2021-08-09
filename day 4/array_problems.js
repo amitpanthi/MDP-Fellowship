@@ -54,3 +54,27 @@ function findPairWithSum(array, sum_val){
 }
 
 console.log(findPairWithSum(numbers, 3))
+
+// Find duplicate numbers in an array if it contains multiple duplicates
+numbers = [11, 21, 11, 42, 42, 42, 3]
+
+function findDuplicates(array){
+    let uniqueNumbers = new Set()
+    let duplicates = []
+
+    for(const num of numbers){
+        if(uniqueNumbers.has(num)){
+            if(duplicates.includes(num)){
+                continue
+            } else {
+                duplicates.push(num)
+            }
+        } else {
+            uniqueNumbers.add(num)
+        }
+    }
+
+    return duplicates
+}
+
+console.log(findDuplicates(numbers))
