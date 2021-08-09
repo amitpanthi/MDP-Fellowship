@@ -5,6 +5,7 @@ class EmployeeWage{
     constructor(name){
         this.name = name
         this.latestAttendance = 0 // 0 - Part Time, 1 - Full Time, 2 - Absent
+        this.dailyWageBreakdown = []
     }
 
 
@@ -223,9 +224,22 @@ class EmployeeWage{
     
 
     printDailyWage(wage_array){
-        wage_array.map(function(wage, currDay){
+        return wage_array.map((wage, currDay) => {
             console.log(`Day ${++currDay}: ${wage}`)
+            return {
+                day: currDay,
+                wage: wage
+            }
         })
+    }
+
+
+    printFullTimeWorked(){
+        let ftWorkedd = this.dailyWageBreakdown.filter((day) => {
+            return day.wage >= 160
+         })
+
+        console.log(ftWorkedd)
     }
 
 
@@ -271,10 +285,11 @@ class EmployeeWage{
 
     runHelperFunctions(wage_array){
         this.calculateTotalWages(wage_array)
-        this.printDailyWage(wage_array)
+        this.dailyWageBreakdown = this.printDailyWage(wage_array)
         this.findFirstFullTime(wage_array)
         this.checkPartTime(wage_array)
         this.checkDaysWorked(wage_array)
+        this.printFullTimeWorked()
     }
 }
 
