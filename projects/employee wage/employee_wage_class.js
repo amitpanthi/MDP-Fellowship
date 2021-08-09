@@ -208,9 +208,21 @@ class EmployeeWage{
         console.log("Days worked Full Time: " + fullTimeCounter)
         console.log("Days worked Part Time: " + partTimeCounter)
         console.log("Days absent: " + absentCounter)
+
+        return [wages, workHours]
     }
 
+    calculateTotalWages(){
+        let employeeStats = this.monthlyPayBreakdown()
+        let wages = employeeStats[0]
+        let runningSum = 0
 
+        wages.forEach(wage => runningSum += wage)
+        console.log(runningSum)
+
+        return wages
+    }
+    
     displayReport(){
         this.greet()
         this.getAttendance()
@@ -219,10 +231,13 @@ class EmployeeWage{
         this.maxWorkingHours()
         this.monthlyPayBreakdown()
     }
+
+    runHelperFunctions(){
+        this.calculateTotalWages()
+    }
 }
 
 let john_wage = new EmployeeWage("John")
 let akash_wage = new EmployeeWage("Akash")
 
-john_wage.displayReport()
-akash_wage.displayReport()
+john_wage.runHelperFunctions()
