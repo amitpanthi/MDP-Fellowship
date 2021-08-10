@@ -303,7 +303,7 @@ class EmployeeWage{
     }
 
 
-    displayReport(){
+    displayReport(){g
         this.greet()
         this.getAttendance()
         this.getDailyPay()
@@ -326,8 +326,11 @@ class EmployeeWage{
     }
 }
 
+
 let john_wage = new EmployeeWage("John")
 let akash_wage = new EmployeeWage("Akash")
 
 employeeStats = john_wage.displayReport()
 john_wage.runHelperFunctions(employeeStats[0], employeeStats[1])
+
+
