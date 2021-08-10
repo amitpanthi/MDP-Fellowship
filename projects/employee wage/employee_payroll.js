@@ -1,10 +1,10 @@
 class EmployeePayroll{
-    constructor(id, name, salary, gender, start_date){
-        this.e_id = id
-        this.e_name = name
-        this.e_salary = salary
-        this.e_gender = gender
-        this.e_startDate = start_date
+    constructor(...params){
+        this.e_id = params[0]
+        this.e_name = params[1]
+        this.e_salary = params[2]
+        this.e_gender = params[3]
+        this.e_startDate = params[4]
     }
 
     setName(new_name){
