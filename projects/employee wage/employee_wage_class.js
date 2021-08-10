@@ -274,11 +274,15 @@ class EmployeeWage{
     // UC 10
     generateEmployeeMap(wage_array){
         let employeeMap = new Map()
+        let runningTotal = 0
 
         for(let day = 0; day < 20; day++){
+            runningTotal += wage_array[day]
             employeeMap.set(day+1 , wage_array[day])
         }
 
+        employeeMap.set("Total", runningTotal)
+        
         console.log(employeeMap)
     }
 
