@@ -2,25 +2,52 @@
 class DiceSim{
     simulateDie(){
         let rollCounts = new Map()
-        var itr = 0
 
-        while(true){
-            if(itr = 10){
-                console.log(rollCounts)
-                break
+       for(let itr=0; ;itr++){
+            let currRollFn = () => {
+                return Math.ceil(Math.random() * 6)
             }
 
-            let currRoll = () => {
-                return Math.ceil(Math.random() * 10)
-        }
+            let currRoll = currRollFn()
 
             let currCount = rollCounts.get(currRoll) == undefined ? 1 : rollCounts.get(currRoll) + 1
             rollCounts.set(currRoll, currCount)
 
-            itr++
+            if(currCount == 10){
+                break
+            }
         }
+
+        return rollCounts
+    }
+
+    findMaxandMin(counts){
+        let max = 0
+        let min = []
+
+        let maxVal = Number.MIN_VALUE
+        let minVal = Number. MAX_VALUE
+
+        for(let [k, v] of counts){
+            if(v > maxVal){
+                maxVal = v
+                max = k
+                continue
+            }
+
+            if(v < minVal){
+                minVal = v
+                min = [k]
+            } else if (v == minVal){
+                    min.push(k)
+            } 
+        }
+        
+        console.log(`${max}: Rolled ${maxVal} times`)
+        console.log(`${min.join(", ")}: Rolled ${minVal} times`)
     }
 }
 
 ds = new DiceSim()
-ds.simulateDie()
+countsdict = ds.simulateDie()
+ds.findMaxandMin(countsdict)
