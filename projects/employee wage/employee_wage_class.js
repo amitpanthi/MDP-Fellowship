@@ -164,7 +164,7 @@ class EmployeeWage{
         let partTimeCounter = 0
         let absentCounter = 0
         let wages = []
-        let workHours = [] 
+        let workHours = []
 
         for(var day=1; day <= 20; day++){
             if(totalHours >= 160){
@@ -271,6 +271,16 @@ class EmployeeWage{
         console.log("Worker has worked for " + daysWorked + " days")
     }
 
+    // UC 10
+    generateEmployeeMap(wage_array){
+        let employeeMap = new Map()
+
+        for(let day = 0; day < 20; day++){
+            employeeMap.set(day+1 , wage_array[day])
+        }
+
+        console.log(employeeMap)
+    }
 
     displayReport(){
         this.greet()
@@ -290,6 +300,7 @@ class EmployeeWage{
         this.checkPartTime(wage_array)
         this.checkDaysWorked(wage_array)
         this.printFullTimeWorked()
+        this.generateEmployeeMap(wage_array)
     }
 }
 
