@@ -282,9 +282,26 @@ class EmployeeWage{
         }
 
         employeeMap.set("Total", runningTotal)
-        
+
         console.log(employeeMap)
     }
+
+    
+    // UC 11
+    generateEmployeeObject(wage_array, hours_array){
+        let employeeObjects = []
+
+        for(let day = 0; day < 20; day++){
+            employeeObjects.push({
+                'Day': day+1,
+                'Wage': wage_array[day],
+                'Hours Worked': hours_array[day]
+            })
+        }
+
+        console.log(employeeObjects)
+    }
+
 
     displayReport(){
         this.greet()
@@ -297,7 +314,7 @@ class EmployeeWage{
         return employeeStats
     }
 
-    runHelperFunctions(wage_array){
+    runHelperFunctions(wage_array, hours_array){
         this.calculateTotalWages(wage_array)
         this.dailyWageBreakdown = this.printDailyWage(wage_array)
         this.findFirstFullTime(wage_array)
@@ -305,6 +322,7 @@ class EmployeeWage{
         this.checkDaysWorked(wage_array)
         this.printFullTimeWorked()
         this.generateEmployeeMap(wage_array)
+        this.generateEmployeeObject(wage_array, hours_array)
     }
 }
 
@@ -312,4 +330,4 @@ let john_wage = new EmployeeWage("John")
 let akash_wage = new EmployeeWage("Akash")
 
 employeeStats = john_wage.displayReport()
-john_wage.runHelperFunctions(employeeStats[0])
+john_wage.runHelperFunctions(employeeStats[0], employeeStats[1])
