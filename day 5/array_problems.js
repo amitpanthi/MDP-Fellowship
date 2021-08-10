@@ -32,7 +32,12 @@ function findSecondLargestAndSmallest(){
     }
 
     console.log(randomNums)
-    console.log(secondBiggest + " $ " + secondSmallest)
+    console.log(`Second Biggest: ${secondBiggest}\nSecond Smallest:${secondSmallest}`)
+
+    //Extend the above program to sort the array and then find the 2nd largest and the 2nd smallest element.
+    console.log("After sorting")
+    randomNums = randomNums.sort()
+    console.log(`Second Biggest: ${randomNums[8]}\nSecond Smallest:${randomNums[1]}`)
 }
 
 findSecondLargestAndSmallest()
