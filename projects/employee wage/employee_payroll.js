@@ -68,4 +68,14 @@ class EmployeePayroll{
 // ramEmployee.setSalary(6000)
 // ramEmployee.showDetails()
 
-invalidEmployee = new EmployeePayroll("E001242070", "Xi", 4000, "F", "11/11/2021")
+try{
+    invalidEmployee = new EmployeePayroll("E001242070", "Xi", 4000, "F", "11/11/2021")
+} catch(error) {
+    console.log(error)
+}
+
+try{
+    invalidEmployee = new EmployeePayroll("E001242070", "Xi99", 4000, "Fem", "11/11/2021")
+} catch(error) {
+    console.log(error)
+}
